@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>fintrack:Home</title>
+{% endblock title %}
+
+{% block content%}
+<!-- Main Content -->
+
+<div class="container py-5">
+
+    <!-- Welcome -->
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+            Welcome to Finance Tracker
+        </h1>
+
+        <p class="text-muted">
+            Manage your income, expenses and savings easily.
+        </p>
+
+    </div>
+
+    <div class="images">
+        <img class="img" src="https://images.wondershare.com/edrawmax/article2023/finance-department-process-flowchart/finance-department-process-flow-chart.jpg" width="1300px" style=" border-radius:100px;">
+    </div>
+    <br>
+    <br>
+    <!-- Summary Cards -->
+
+    <div class="row g-4">
+
+        <!-- Balance -->
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Total Balance
+                    </h6>
+
+                    <h3 class="text-primary fw-bold">
+                        ₹45,500
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Income -->
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Total Income
+                    </h6>
+
+                    <h3 class="text-success fw-bold">
+                        ₹60,000
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Expenses -->
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Total Expenses
+                    </h6>
+
+                    <h3 class="text-danger fw-bold">
+                        ₹14,500
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Savings -->
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Total Savings
+                    </h6>
+
+                    <h3 class="text-info fw-bold">
+                        ₹45,500
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="card shadow-sm border-0 mt-5">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+                Quick Actions
+            </h4>
+
+            <div class="d-flex gap-3 flex-wrap">
+
+                <a href="#" class="btn btn-success">
+                    + Add Income
+                </a>
+
+                <a href="#" class="btn btn-danger">
+                    - Add Expense
+                </a>
+
+                <a href="#" class="btn btn-primary">
+                    🎯 Set Budget
+                </a>
+
+                <a href="#" class="btn btn-info text-white">
+                    📊 View Reports
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Recent Transactions -->
+
+    <div class="card shadow-sm border-0 mt-5">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-4">
+                Recent Transactions
+            </h4>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>11 Aug 2026</td>
+                            <td>Salary</td>
+                            <td>Job</td>
+                            <td>
+                                <span class="badge bg-success">
+                                    Income
+                                </span>
+                            </td>
+                            <td class="text-success fw-bold">
+                                +₹60,000
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>10 Aug 2026</td>
+                            <td>House Rent</td>
+                            <td>Housing</td>
+                            <td>
+                                <span class="badge bg-danger">
+                                    Expense
+                                </span>
+                            </td>
+                            <td class="text-danger fw-bold">
+                                -₹8,000
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>09 Aug 2026</td>
+                            <td>Grocery</td>
+                            <td>Food</td>
+                            <td>
+                                <span class="badge bg-danger">
+                                    Expense
+                                </span>
+                            </td>
+                            <td class="text-danger fw-bold">
+                                -₹2,500
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock content%}
+
