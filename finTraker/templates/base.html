@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/base.css">
 </head>
-<body style="background:">
+<body>
 <div class="header">
     <!-- Header / Navbar -->
 
@@ -18,7 +18,7 @@
     <div class="container">
 
         <a class="navbar-brand fw-bold" href="#">
-             Finance Tracker
+             <i class="bi bi-coin"></i>Finance Tracker
         </a>
 
         <button class="navbar-toggler"
@@ -36,7 +36,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link active" href="{% url 'home' %}">
-                        Home
+                        <i class="bi bi-house-door-fill"></i>Home
                     </a>
                 </li>
                 {% if user.is_authenticated %}
@@ -49,39 +49,39 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href={% url 'signout' %}>
-                            SignOut
+                            <i class="bi bi-dash-circle"></i>SignOut
                         </a>
 
                     </li>
                 <li class="nav-item">
                         <a class="nav-link" href={% url 'addexpences' %}>
-                            AddExpences
+                             <i class="bi bi-plus-circle">AddExpences
                         </a>
 
                     </li>
                 <li class="nav-item">
                         <a class="nav-link" href={% url 'listexpences' %}>
-                            Expences
+                            <i class="bi bi-card-list"></i> Expences
                         </a>
 
                     </li>
                 {%else%}
                     <li class="nav-item">
                         <a class="nav-link" href={% url 'signin' %}>
-                            Sign In
+                            <i class="bi bi-box-arrow-in-right"></i>Sign In
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href={% url 'signup' %}>
-                            Sign Up
+                            <i class="bi bi-plus-circle"></i>Sign Up
                         </a>
                     </li>
 
                 {%endif%}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about'%}">
-                        About Us
+                        <i class="bi bi-file-earmark-person-fill"></i>About Us
                     </a>
                 </li>
 

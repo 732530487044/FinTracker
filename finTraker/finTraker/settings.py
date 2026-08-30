@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'pages',
     'account',
     'expences',
+    'income',
      'crispy_forms',
     'crispy_bootstrap5',
 ]

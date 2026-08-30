@@ -3,11 +3,16 @@
 
 {% block content %}
 
-<div class=" p m " >
+<div class=" p m border" >
+    <h2 class="font-monospace text-center">Update Expences</h2>
 <form method="post">
     {% csrf_token %}
     {{form|crispy}}
-    <button type="submit" class="btn btn-outline-primary">Update Expences</button>
+    <button type="submit" class="btn btn-warning">Update Expences</button>
+       <a href="{% url 'listexpences'%}" class="btn btn-outline-primary">
+            Cancel
+        </a>
+
 </form>
 </div>
 
