@@ -1,245 +1,539 @@
+
 {% extends 'base.html' %}
 
-{% block title %}
-<title>fintrack:Home</title>
-{% endblock title %}
+{% block content %}
 
-{% block content%}
-<!-- Main Content -->
+<style>
+    body {
+        background: #f5f7fb;
+    }
 
-<div class="container py-5">
+    .home-container {
+        padding: 35px 20px;
+    }
 
-    <!-- Welcome -->
-    <div class="text-center mb-5">
+    /* Welcome Section */
+    .welcome-section {
+        background: linear-gradient(135deg, #4e73df, #224abe);
+        color: white;
+        padding: 35px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    }
 
-        <h1 class="fw-bold">
-            Welcome to Finance Tracker
+    .welcome-section h1 {
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .welcome-section p {
+        margin-bottom: 0;
+        font-size: 17px;
+        opacity: 0.9;
+    }
+
+    /* Summary Cards */
+    .summary-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .summary-card {
+        flex: 1 1 220px;
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        border-left: 5px solid;
+    }
+
+    .summary-card h6 {
+        color: #6c757d;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .summary-card h2 {
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .income-card {
+        border-color: #198754;
+    }
+
+    .income-card h2 {
+        color: #198754;
+    }
+
+    .expense-card {
+        border-color: #dc3545;
+    }
+
+    .expense-card h2 {
+        color: #dc3545;
+    }
+
+    .balance-card {
+        border-color: #4e73df;
+    }
+
+    .balance-card h2 {
+        color: #4e73df;
+    }
+
+    .monthly-card {
+        border-color: #fd7e14;
+    }
+
+    .monthly-card h2 {
+        color: #fd7e14;
+    }
+
+    /* Action Section */
+    .section-title {
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 20px;
+    }
+
+    .action-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+
+    .action-card {
+        flex: 1 1 200px;
+        min-height: 150px;
+        background: white;
+        border-radius: 18px;
+        padding: 25px;
+        text-decoration: none;
+        color: #212529;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .action-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        color: #212529;
+    }
+
+    .action-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .action-card h5 {
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .action-card p {
+        color: #6c757d;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .add-expense .action-icon {
+        background: #ffe5e8;
+        color: #dc3545;
+    }
+
+    .show-expense .action-icon {
+        background: #fff0f1;
+        color: #e83e8c;
+    }
+
+    .add-income .action-icon {
+        background: #dff7e8;
+        color: #198754;
+    }
+
+    .show-income .action-icon {
+        background: #e0f2ff;
+        color: #0d6efd;
+    }
+
+    .monthly-expense .action-icon {
+        background: #fff0dc;
+        color: #fd7e14;
+    }
+
+    /* Bottom Section */
+    .bottom-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    .monthly-expenses {
+        flex: 2 1 500px;
+        background: white;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .finance-image {
+        flex: 1 1 300px;
+        min-height: 300px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .finance-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        object-fit: cover;
+    }
+
+    /* Expense Rows */
+    .expense-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .expense-row:last-child {
+        border-bottom: none;
+    }
+
+    .expense-name {
+        font-weight: 600;
+    }
+
+    .expense-amount {
+        font-weight: 700;
+        color: #dc3545;
+    }
+
+    .progress {
+        height: 7px;
+        margin-top: 7px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+
+        .home-container {
+            padding: 20px 12px;
+        }
+
+        .welcome-section {
+            padding: 25px;
+        }
+
+        .welcome-section h1 {
+            font-size: 28px;
+        }
+
+        .summary-card {
+            flex: 1 1 100%;
+        }
+
+        .action-card {
+            flex: 1 1 100%;
+        }
+    }
+</style>
+
+
+<div class="container-fluid home-container">
+
+    <!-- ================= WELCOME ================= -->
+
+    <div class="welcome-section">
+
+        <h1>
+            👋 Welcome back,
+            {% if user.is_authenticated %}
+                {{ user.username }}
+            {% else %}
+                User
+            {% endif %}
         </h1>
 
-        <p class="text-muted">
-            Manage your income, expenses and savings easily.
+        <p>
+            Manage your income and expenses easily and keep your
+            finances under control.
         </p>
 
     </div>
 
-    <div class="images">
-        <img class="img" src="https://images.wondershare.com/edrawmax/article2023/finance-department-process-flowchart/finance-department-process-flow-chart.jpg" width="1300px" style=" border-radius:100px;">
-    </div>
-    <br>
-    <br>
-    <!-- Summary Cards -->
 
-    <div class="row g-4">
+    <!-- ================= FINANCIAL SUMMARY ================= -->
+
+    <h3 class="section-title">
+        📊 Financial Overview
+    </h3>
+
+    <div class="summary-container">
+
+        <!-- Total Income -->
+        <div class="summary-card income-card">
+
+            <h6>
+                💰 Total Income
+            </h6>
+
+            <h2>
+                ₹{{ total_income|default:"0" }}
+            </h2>
+
+        </div>
+
+
+        <!-- Total Expenses -->
+        <div class="summary-card expense-card">
+
+            <h6>
+                💸 Total Expenses
+            </h6>
+
+            <h2>
+                ₹{{ total_expenses|default:"0" }}
+            </h2>
+
+        </div>
+
 
         <!-- Balance -->
+        <div class="summary-card balance-card">
 
-        <div class="col-md-3">
+            <h6>
+                💵 Available Balance
+            </h6>
 
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body text-center">
-
-                    <h6 class="text-muted">
-                        Total Balance
-                    </h6>
-
-                    <h3 class="text-primary fw-bold">
-                        ₹45,500
-                    </h3>
-
-                </div>
-
-            </div>
+            <h2>
+                ₹{{ balance|default:"0" }}
+            </h2>
 
         </div>
 
 
-        <!-- Income -->
+        <!-- Monthly Expenses -->
+        <div class="summary-card monthly-card">
 
-        <div class="col-md-3">
+            <h6>
+                📅 This Month
+            </h6>
 
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body text-center">
-
-                    <h6 class="text-muted">
-                        Total Income
-                    </h6>
-
-                    <h3 class="text-success fw-bold">
-                        ₹60,000
-                    </h3>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Expenses -->
-
-        <div class="col-md-3">
-
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body text-center">
-
-                    <h6 class="text-muted">
-                        Total Expenses
-                    </h6>
-
-                    <h3 class="text-danger fw-bold">
-                        ₹14,500
-                    </h3>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Savings -->
-
-        <div class="col-md-3">
-
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body text-center">
-
-                    <h6 class="text-muted">
-                        Total Savings
-                    </h6>
-
-                    <h3 class="text-info fw-bold">
-                        ₹45,500
-                    </h3>
-
-                </div>
-
-            </div>
+            <h2>
+                ₹{{ monthly_expenses|default:"0" }}
+            </h2>
 
         </div>
 
     </div>
 
 
-    <!-- Quick Actions -->
+    <!-- ================= QUICK ACTIONS ================= -->
 
-    <div class="card shadow-sm border-0 mt-5">
+    <h3 class="section-title">
+        ⚡ Quick Actions
+    </h3>
 
-        <div class="card-body">
+    <div class="action-container">
 
-            <h4 class="fw-bold mb-4">
-                Quick Actions
-            </h4>
 
-            <div class="d-flex gap-3 flex-wrap">
+        <!-- Add Expense -->
+        <a href="{% url 'addexpences' %}"
+           class="action-card add-expense">
 
-                <a href="{%url 'add_income'%}" class="btn btn-success">
-                    + Add Income
-                </a>
-
-                <a href="{%url 'addexpences'%}" class="btn btn-danger">
-                    + Add Expense
-                </a>
-
-                <a href="#" class="btn btn-primary">
-                    🎯 Set Budget
-                </a>
-
-                <a href="#" class="btn btn-info text-white">
-                    📊 View Reports
-                </a>
-
+            <div class="action-icon">
+                ➕
             </div>
 
-        </div>
+            <h5>
+                Add Expense
+            </h5>
+
+            <p>
+                Record a new expense
+            </p>
+
+        </a>
+
+
+        <!-- Show Expenses -->
+        <a href="{% url 'listexpences' %}"
+           class="action-card show-expense">
+
+            <div class="action-icon">
+                📋
+            </div>
+
+            <h5>
+                Show Expenses
+            </h5>
+
+            <p>
+                View all your expenses
+            </p>
+
+        </a>
+
+
+        <!-- Add Income -->
+        <a href="{% url 'add_income' %}"
+           class="action-card add-income">
+
+            <div class="action-icon">
+                💰
+            </div>
+
+            <h5>
+                Add Income
+            </h5>
+
+            <p>
+                Record a new income
+            </p>
+
+        </a>
+
+
+        <!-- Show Income -->
+        <a href="{% url 'list_income' %}"
+           class="action-card show-income">
+
+            <div class="action-icon">
+                📋
+            </div>
+
+            <h5>
+                Show Income
+            </h5>
+
+            <p>
+                View all your income
+            </p>
+
+        </a>
+
+
+        <!-- Monthly Expenses -->
+        <a href="#"
+           class="action-card monthly-expense">
+
+            <div class="action-icon">
+                📊
+            </div>
+
+            <h5>
+                Monthly Expenses
+            </h5>
+
+            <p>
+                Check monthly spending
+            </p>
+
+        </a>
 
     </div>
 
+    <div class="bottom-container">
 
-    <!-- Recent Transactions -->
+        <div class="monthly-expenses">
 
-    <div class="card shadow-sm border-0 mt-5">
+            <h3 class="section-title">
+                📅 Monthly Expenses
+            </h3>
 
-        <div class="card-body">
+            {% if monthly_expense_list %}
 
-            <h4 class="fw-bold mb-4">
-                Recent Transactions
-            </h4>
+                {% for expense in monthly_expense_list %}
 
-            <div class="table-responsive">
+                    <div class="expense-row">
 
-                <table class="table table-hover">
+                        <div>
 
-                    <thead class="table-dark">
+                            <div class="expense-name">
+                                {{ expense.category }}
+                            </div>
 
-                        <tr>
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Type</th>
-                            <th>Amount</th>
-                        </tr>
+                            <div class="progress">
 
-                    </thead>
+                                <div
+                                    class="progress-bar bg-danger"
+                                    role="progressbar"
+                                    style="width: {{ expense.percentage }}%;"
+                                >
+                                </div>
 
-                    <tbody>
+                            </div>
 
-                        <tr>
-                            <td>11 Aug 2026</td>
-                            <td>Salary</td>
-                            <td>Job</td>
-                            <td>
-                                <span class="badge bg-success">
-                                    Income
-                                </span>
-                            </td>
-                            <td class="text-success fw-bold">
-                                +₹60,000
-                            </td>
-                        </tr>
+                        </div>
 
-                        <tr>
-                            <td>10 Aug 2026</td>
-                            <td>House Rent</td>
-                            <td>Housing</td>
-                            <td>
-                                <span class="badge bg-danger">
-                                    Expense
-                                </span>
-                            </td>
-                            <td class="text-danger fw-bold">
-                                -₹8,000
-                            </td>
-                        </tr>
+                        <div class="expense-amount">
 
-                        <tr>
-                            <td>09 Aug 2026</td>
-                            <td>Grocery</td>
-                            <td>Food</td>
-                            <td>
-                                <span class="badge bg-danger">
-                                    Expense
-                                </span>
-                            </td>
-                            <td class="text-danger fw-bold">
-                                -₹2,500
-                            </td>
-                        </tr>
+                            ₹{{ expense.amount }}
 
-                    </tbody>
+                        </div>
 
-                </table>
+                    </div>
 
-            </div>
+                {% endfor %}
+
+            {% else %}
+
+                <div class="text-center py-5">
+
+                    <div style="font-size: 50px;">
+                        📊
+                    </div>
+
+                    <h5 class="mt-3">
+                        No expenses this month
+                    </h5>
+
+                    <p class="text-muted">
+                        Start adding your expenses to see
+                        your monthly spending here.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Finance Image -->
+
+        <div class="finance-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80"
+                alt="Personal finance and money management"
+            >
 
         </div>
 
     </div>
 
 </div>
-{% endblock content%}
 
+{% endblock content %}

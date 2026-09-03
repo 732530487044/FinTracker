@@ -27,11 +27,7 @@ def list_income(request):
 
     incomes = Income.objects.filter(user=request.user)
 
-    return render(
-        request,
-        'income/listincome.html',
-        {'incomes': incomes}
-    )
+    return render(request, 'income/listincome.html',{'incomes': incomes})
 
 @login_required(login_url=('signin'))
 def delete_income(request, id):
@@ -46,8 +42,4 @@ def delete_income(request, id):
         income.delete()
         return redirect('listincome')
 
-    return render(
-        request,
-        'income/deleteincome.html',
-        {'income': income}
-    )
+    return render(request,'income/deleteincome.html',{'income': income})
