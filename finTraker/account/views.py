@@ -3,9 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate , login, logout
 
-
-
-
 # Create your views here.
 def signup(request):
     form = UserCreationForm()

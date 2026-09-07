@@ -10,6 +10,7 @@ class Expences(models.Model):
         ('bill', 'Bill'),
         ('medical', 'Medical'),
         ('entertainment', 'Entertainment'),
+        ('transport','Transport'),
         ('other', 'Other'),
     )
 

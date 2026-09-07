@@ -262,7 +262,6 @@
 
 <div class="container-fluid home-container">
 
-    <!-- ================= WELCOME ================= -->
 
     <div class="welcome-section">
 
@@ -281,17 +280,11 @@
         </p>
 
     </div>
-
-
-    <!-- ================= FINANCIAL SUMMARY ================= -->
-
     <h3 class="section-title">
         📊 Financial Overview
     </h3>
 
     <div class="summary-container">
-
-        <!-- Total Income -->
         <div class="summary-card income-card">
 
             <h6>
@@ -304,8 +297,6 @@
 
         </div>
 
-
-        <!-- Total Expenses -->
         <div class="summary-card expense-card">
 
             <h6>
@@ -318,8 +309,6 @@
 
         </div>
 
-
-        <!-- Balance -->
         <div class="summary-card balance-card">
 
             <h6>
@@ -332,33 +321,26 @@
 
         </div>
 
-
-        <!-- Monthly Expenses -->
         <div class="summary-card monthly-card">
 
             <h6>
-                📅 This Month
+                📅 This Month Saving
             </h6>
 
             <h2>
-                ₹{{ monthly_expenses|default:"0" }}
+                ₹{{ this_month_saving|default:"0" }}
             </h2>
 
         </div>
 
     </div>
 
-
-    <!-- ================= QUICK ACTIONS ================= -->
-
     <h3 class="section-title">
-        ⚡ Quick Actions
+         Quick Actions
     </h3>
 
     <div class="action-container">
 
-
-        <!-- Add Expense -->
         <a href="{% url 'addexpences' %}"
            class="action-card add-expense">
 
@@ -376,8 +358,6 @@
 
         </a>
 
-
-        <!-- Show Expenses -->
         <a href="{% url 'listexpences' %}"
            class="action-card show-expense">
 
@@ -395,8 +375,6 @@
 
         </a>
 
-
-        <!-- Add Income -->
         <a href="{% url 'add_income' %}"
            class="action-card add-income">
 
@@ -414,8 +392,6 @@
 
         </a>
 
-
-        <!-- Show Income -->
         <a href="{% url 'list_income' %}"
            class="action-card show-income">
 
@@ -432,9 +408,6 @@
             </p>
 
         </a>
-
-
-        <!-- Monthly Expenses -->
         <a href="#"
            class="action-card monthly-expense">
 
@@ -519,10 +492,6 @@
             {% endif %}
 
         </div>
-
-
-        <!-- Finance Image -->
-
         <div class="finance-image">
 
             <img
