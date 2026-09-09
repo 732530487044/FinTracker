@@ -1,0 +1,32 @@
+<canvas id="expenseChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const months = {{ months|safe }};
+const expenses = {{ expenses|safe }};
+
+new Chart(document.getElementById('expenseChart'), {
+    type: 'bar',
+
+    data: {
+        labels: months,
+
+        datasets: [{
+            label: 'Monthly Expenses',
+            data: expenses,
+            borderWidth: 1
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
