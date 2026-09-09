@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.db.models import Sum
 from expences.models import Expences
 from income.models import Income
@@ -6,6 +6,8 @@ from datetime import date
 from django.db.models.functions import TruncMonth
 
 def home_view(request):
+    if not request.user.is_authenticated:
+        return redirect('signin')
     total_expenses =int( Expences.objects.filter(user=request.user).aggregate(Sum('amount')).get('amount__sum') or 0)
 
     total_income = Income.objects.filter(user=request.user).aggregate(Sum('amount') ).get('amount__sum') or 0
