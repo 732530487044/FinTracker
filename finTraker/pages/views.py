@@ -21,7 +21,7 @@ def home_view(request):
 
     this_month_income=Income.objects.filter(user=request.user,date__year=today.year,date__month=today.month).aggregate(Sum('amount')).get('amount__sum') 
     this_month_saving=0
-    print(this_month_income,this_month_expences)
+    
     if this_month_income != None and this_month_expences == None:
      
        this_month_saving = this_month_income
